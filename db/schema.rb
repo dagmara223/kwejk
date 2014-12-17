@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216164944) do
+ActiveRecord::Schema.define(version: 20141217204914) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 20141216164944) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "mems", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "active"
+  end
+
+  add_index "mems", ["user_id"], name: "index_mems_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
